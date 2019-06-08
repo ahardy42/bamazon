@@ -14,6 +14,10 @@ CREATE TABLE products (
     PRIMARY KEY (item_id)
 );
 
+UPDATE products SET stock_quantity = 3 WHERE item_id = 1;
 SELECT * FROM products;
+SELECT stock_quantity FROM products WHERE item_id = 3;
 
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root'
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
+
+SELECT stock_quantity FROM products WHERE item_id = 1;
