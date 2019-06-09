@@ -21,3 +21,5 @@ SELECT stock_quantity FROM products WHERE item_id = 3;
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
 
 SELECT stock_quantity FROM products WHERE item_id = 1;
+
+UPDATE products SET stock_quantity= stock_quantity+2 WHERE item_id= 9;

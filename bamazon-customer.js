@@ -15,10 +15,10 @@ var connection = mysql.createConnection({
 function displayItems(result) {
     // create a table with the data from res (array)
     var data = [];
-    var tableCols = ["ID", "Product", "Price", "stock"];
+    var tableCols = ["ID", "Product", "Price", "stock", "sales"];
     data.push(tableCols);
     result.forEach(element => {
-        var row = [element.item_id, element.product_name, element.price, element.stock_quantity];
+        var row = [element.item_id, element.product_name, element.price, element.stock_quantity, element.sales];
         data.push(row);
     });
     // log that table!
@@ -54,14 +54,13 @@ function idQtyQuery(id, qty) {
         if (err) console.log("you threw an error",err);
         // print the result
         printPrice(qty, res);
-        idQtyUpdate(id, res[0].stock_quantity, qty);
+        idQtyUpdate(id, qty);
     });
 };
 
-function idQtyUpdate(id, curr_qty, qty) {
-    curr_qty -= qty;
-    var qtyString = curr_qty.toString();
-    connection.query("UPDATE products SET stock_quantity = ? WHERE item_id = ?", [qtyString, id], function(err, res) {
+function idQtyUpdate(id, qty) {
+    // UPDATE products SET stock_quantity = stock_quantity - 2, sales = price * 2 + sales WHERE item_id = 6
+    connection.query(`UPDATE products SET stock_quantity = stock_quantity - ${qty}, sales = price * ${qty} + IFNULL(sales,0) WHERE item_id = ${id}`, function(err, res) {
         if (err) console.log(err);
     });
     connection.end(); // this is the last query to perform, so end the connection.
