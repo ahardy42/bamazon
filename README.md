@@ -17,12 +17,12 @@ Running ```node bamazon-manager.js``` in your terminal allows you to update the 
 
 Let's run through the app using GIFs to show the results of running code.  First, with the customer version.
 
-Run ```node bamazon-customer.js``` and you will see:
-- GIF placeholder 
+Run ```node bamazon-customer.js``` and then...
+
 Let's buy something:
-- GIF placeholder
+![buy something](https://media.giphy.com/media/2kP6HdUUIYGkvLQmqx/giphy.gif)
 If you try to buy too much...
-- GIF placeholder
+![buy too much](https://media.giphy.com/media/Wwfm5QzIynyJu6ozMY/giphy.gif)
 
 Now, let's run through the available options as a manager.
 
