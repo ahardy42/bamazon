@@ -50,14 +50,12 @@ function getProducts(printFunc) {
 function runApp(selection) {
     switch (selection) {
         case "Add item to inventory":
-            
             getAnswers(inventoryAddPrompt)
             .then(function(answers) {
                 var qty = answers.qty;
                 var id = answers.id;
-                connection.query("UPDATE products SET stock_quantity= ? WHERE item_id= ?", [qty, id], function(err, res) {
+                connection.query("UPDATE products SET stock_quantity= stock_quantity + ? WHERE item_id= ?", [qty, id], function(err, res) {
                     if (err) console.log(err);
-                    console.log(res);
                     getProducts(printForSale);
                 });
             });
@@ -69,9 +67,8 @@ function runApp(selection) {
                 var department = answers.department;
                 var price = answers.price.toFixed(2);
                 var qty = answers.qty;
-                connection.query(`INSERT INTO products (product_name,department_name,price,stock_quantity) VALUES (${name},${department},${price},${qty})`, function(err, res) {
+                connection.query(`INSERT INTO products (product_name,department_name,price,stock_quantity) VALUES ('${name}','${department}',${price},${qty})`, function(err, res) {
                     if (err) console.log(err);
-                    console.log(res);
                     getProducts(printForSale);
                 });
             });
