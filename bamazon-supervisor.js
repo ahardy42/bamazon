@@ -14,7 +14,7 @@ var connection = mysql.createConnection({
 
 function printProductSales(result) {
     var data = [];
-    var tableCols = ["department ID", "Department Name", "Overhead Costs", "Product Sales", "Profit"];
+    var tableCols = ["Department ID", "Department Name", "Overhead Costs", "Product Sales", "Profit"];
     data.push(tableCols);
     result.forEach(element => {
         // get the row and push the row
@@ -24,6 +24,18 @@ function printProductSales(result) {
     var output = table.table(data);
     console.log(output);
 };
+
+function printDepartments(result) {
+    var data = [];
+    var tableCols = ["Department ID", "Department Name", "Overhead Costs"];
+    data.push(tableCols);
+    result.forEach(element => {
+        var row = [element.department_id, element.department_name, element.overhead_costs];
+        data.push(row);
+    });
+    var output = table.table(data);
+    console.log(output);
+}
 
 // ========================= mysql queries ===================================
 
@@ -41,7 +53,32 @@ function getSalesData(printFunc) {
     connection.end();
 };
 
+function addDepartment(printFunc) {
+    var sqlinner = "SELECT * FROM departments";
+    var sqlouter = "INSERT INTO departments ( department_name, overhead_costs ) VALUES ( ?, ? )";
+    getAnswers(newDeptPrompt).then(function(answers) {
+        connection.query(sqlouter, [answers.deptName, answers.overhead], function(err, res) {
+            if (err) console.log(err);
+            // run a second nested query to print the resulting table
+            connection.query(sqlinner, function(err, res) {
+                if (err) console.log(err);
+                printFunc(res);
+            });
+            connection.end();
+        });
+    });
+};
 
+function runApp(selection) {
+    switch(selection) {
+        case "View Product Sales by Department":
+            getSalesData(printProductSales);
+            break;
+        case "Create New Department":
+            addDepartment(printDepartments);
+            break;
+    };
+};
 
 // ========================= inquirer prompts ===================================
 
@@ -62,6 +99,11 @@ var newDeptPrompt = [
         type: "input",
         message: "What is the name of the department you would like to add?",
         name: "deptName"
+    },
+    {
+        type: "number",
+        message: "What Overhead Costs does this department have?",
+        name: "overhead"
     }
 ];
 
@@ -71,3 +113,6 @@ async function getAnswers(prompts) {
 };
 
 // ========================= run the app ===================================
+getAnswers(listPrompt).then(function(answers) {
+    runApp(answers.selection);
+});

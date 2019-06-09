@@ -15,10 +15,10 @@ var connection = mysql.createConnection({
 function displayItems(result) {
     // create a table with the data from res (array)
     var data = [];
-    var tableCols = ["ID", "Product", "Price", "stock", "sales"];
+    var tableCols = ["ID", "Product", "Price", "stock"];
     data.push(tableCols);
     result.forEach(element => {
-        var row = [element.item_id, element.product_name, element.price, element.stock_quantity, element.sales];
+        var row = [element.item_id, element.product_name, element.price, element.stock_quantity];
         data.push(row);
     });
     // log that table!
