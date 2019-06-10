@@ -29,8 +29,10 @@ function displayItems(result) {
 function printPrice(qty, result) {
     if (qty > result[0].stock_quantity) {
         console.log("sorry, we don't have enough items for your order");
+        return false;
     } else {
         console.log(`Excellent choice, that will be $${qty * parseFloat(result[0].price)}`);
+        return true;
     }
 }
 
@@ -53,16 +55,19 @@ function idQtyQuery(id, qty) {
     connection.query(`SELECT stock_quantity, price FROM products WHERE item_id = ${id}`, function(err, res) {
         if (err) console.log("you threw an error",err);
         // print the result
-        printPrice(qty, res);
-        idQtyUpdate(id, qty);
+        var bool = printPrice(qty, res);
+        console.log(bool);
+        idQtyUpdate(id, qty, bool);
     });
 };
 
-function idQtyUpdate(id, qty) {
-    // UPDATE products SET stock_quantity = stock_quantity - 2, sales = price * 2 + sales WHERE item_id = 6
-    connection.query(`UPDATE products SET stock_quantity = stock_quantity - ${qty}, sales = price * ${qty} + IFNULL(sales,0) WHERE item_id = ${id}`, function(err, res) {
-        if (err) console.log(err);
-    });
+function idQtyUpdate(id, qty, bool) {
+    // if bool === true, then update qty otherwise, don't because you'll end up w/ a negative qty
+    if (bool) {
+        connection.query(`UPDATE products SET stock_quantity = stock_quantity - ${qty}, sales = price * ${qty} + IFNULL(sales,0) WHERE item_id = ${id}`, function (err, res) {
+            if (err) console.log(err);
+        });
+    }
     connection.end(); // this is the last query to perform, so end the connection.
 }
 

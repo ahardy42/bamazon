@@ -38,8 +38,13 @@ function printLowInventory(result) {
 
 // ================================ mysql queries =======================================
 
-function getProducts(printFunc) {
-    connection.query("SELECT * FROM products", function(err, res) {
+function getProducts(printFunc, qty) {
+    if (qty) {
+        var sql = `SELECT * FROM products WHERE stock_quantity < ${qty}`;
+    } else {
+        var sql = "SELECT * FROM products";
+    }
+    connection.query(sql, function(err, res) {
         if (err) console.log(err);
         // print results of the query using selected function
         printFunc(res);
@@ -77,7 +82,7 @@ function runApp(selection) {
             getProducts(printForSale);
             break;
         case "View Low Inventory Items":
-            getProducts(printLowInventory);
+            getProducts(printLowInventory, "5");
             break;
     }
 };
