@@ -29,25 +29,37 @@ If you try to buy too much...
 
 Now, let's run through the available options as a manager.
 
-Run ```node bamazon-manager-.js``` and you will see:
-- GIF placeholder
+Run ```node bamazon-manager-.js``` and you will see a list of options to choose from:
+
+![start manager app](https://media.giphy.com/media/1fhHiNx0oc9kDZiEMB/giphy.gif)
+
 Let's see what's currently in the store:
-- GIF placeholder
+
+![current products](https://media.giphy.com/media/3PAIpWKz7ZbbVJWmXi/giphy.gif)
+
 Let's see what are low inventory items:
-- GIF placeholder
+
+![low inventory](https://media.giphy.com/media/1d5Thk1OlQ5QO8Tt5g/giphy.gif)
+
 Let's add to the inventory:
-- GIF placeholder
+
+![add to inventory](https://media.giphy.com/media/de5SFHGFiVnHCyFkBt/giphy.gif)
+
 Let's go ahead and add a whole new product:
-- GIF placeholder
+
+![add new product](https://media.giphy.com/media/1SyWvAWtPHO2B1odhq/giphy.gif)
 
 Finally, let's run through the avaialbe options as supervisor.
 
-Run ```node bamazon-supervisor.js``` and you will see:
-- GIF placeholder
+Run ```node bamazon-supervisor.js``` and you will see two choices: **View Sales by Department** and **Create New Department**
+
 Let's see how each department is doing with sales:
-- GIF placeholder
+
+![department sales](https://media.giphy.com/media/1wQN3MYZifZdKffWZf/giphy.gif)
+
 Let's create a new department:
-- GIF placeholder
+
+![create department](
 
 ## How it does it...
 
@@ -66,4 +78,8 @@ var connection = mysql.createConnection({
     password: 'root'
 });
 ```
-The logic behind the app was built using node.js utilizing the libraries mentioned above.
+The logic behind the app was built using node.js utilizing the libraries mentioned above as well as SQL queries. The database structure looks like this:
+
+![database structure](./images/database_structure.png)
+
+**Thanks for reading!**
