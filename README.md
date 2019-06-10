@@ -51,12 +51,15 @@ Let's go ahead and add a whole new product:
 
 Finally, let's run through the avaialbe options as supervisor.
 
-Run ```node bamazon-supervisor.js``` and you will see:
-- GIF placeholder
+Run ```node bamazon-supervisor.js``` and you will see two choices: **View Sales by Department** and **Create New Department**
+
 Let's see how each department is doing with sales:
-- GIF placeholder
+
+![department sales](https://media.giphy.com/media/1wQN3MYZifZdKffWZf/giphy.gif)
+
 Let's create a new department:
-- GIF placeholder
+
+![create department](
 
 ## How it does it...
 
@@ -75,4 +78,8 @@ var connection = mysql.createConnection({
     password: 'root'
 });
 ```
-The logic behind the app was built using node.js utilizing the libraries mentioned above.
+The logic behind the app was built using node.js utilizing the libraries mentioned above as well as SQL queries. The database structure looks like this:
+
+![database structure](./images/database_structure.png)
+
+**Thanks for reading!**
