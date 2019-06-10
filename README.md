@@ -29,8 +29,10 @@ If you try to buy too much...
 
 Now, let's run through the available options as a manager.
 
-Run ```node bamazon-manager-.js``` and you will see:
-- GIF placeholder
+Run ```node bamazon-manager-.js``` and you will see a list of options to choose from:
+
+![start manager app](https://media.giphy.com/media/1fhHiNx0oc9kDZiEMB/giphy.gif)
+
 Let's see what's currently in the store:
 - GIF placeholder
 Let's see what are low inventory items:
