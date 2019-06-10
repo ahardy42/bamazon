@@ -10,4 +10,4 @@ CREATE TABLE departments (
 INSERT INTO departments ( department_name, overhead_costs )
 VALUES ("Bikes", 2000.00), ("Skis", 1500.00);
 
-SELECT * FROM departments;
+SELECT * FROM products WHERE stock_quantity < 5;

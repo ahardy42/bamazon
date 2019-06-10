@@ -56,7 +56,6 @@ function idQtyQuery(id, qty) {
         if (err) console.log("you threw an error",err);
         // print the result
         var bool = printPrice(qty, res);
-        console.log(bool);
         idQtyUpdate(id, qty, bool);
     });
 };
