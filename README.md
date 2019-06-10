@@ -34,13 +34,20 @@ Run ```node bamazon-manager-.js``` and you will see a list of options to choose 
 ![start manager app](https://media.giphy.com/media/1fhHiNx0oc9kDZiEMB/giphy.gif)
 
 Let's see what's currently in the store:
-- GIF placeholder
+
+![current products](https://media.giphy.com/media/3PAIpWKz7ZbbVJWmXi/giphy.gif)
+
 Let's see what are low inventory items:
-- GIF placeholder
+
+![low inventory](https://media.giphy.com/media/1d5Thk1OlQ5QO8Tt5g/giphy.gif)
+
 Let's add to the inventory:
-- GIF placeholder
+
+![add to inventory](https://media.giphy.com/media/de5SFHGFiVnHCyFkBt/giphy.gif)
+
 Let's go ahead and add a whole new product:
-- GIF placeholder
+
+![add new product](https://media.giphy.com/media/1SyWvAWtPHO2B1odhq/giphy.gif)
 
 Finally, let's run through the avaialbe options as supervisor.
 
