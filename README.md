@@ -59,7 +59,7 @@ Let's see how each department is doing with sales:
 
 Let's create a new department:
 
-![create department](
+![create department](https://media.giphy.com/media/9VvisjZwHlDT11KTUt/giphy.gif)
 
 ## How it does it...
 
